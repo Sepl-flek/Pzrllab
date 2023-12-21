@@ -39,7 +39,8 @@ int main(int argc, char** argv)
 
     if(i == 1 && arr[0][0] == 126 && arr[0][1] != 45)
     {
-	//function ~
+	printf("Yes\n");
+	tild(arr[0]);
     }
     else if(i == 3)
     {

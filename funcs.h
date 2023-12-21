@@ -18,3 +18,5 @@ char* tenoct(int decimalNumber);
 void operation(char* num1, char* num2, char* oper);
 
 int prost(int num1, int num2, char* oper);
+
+void tild(char* num);

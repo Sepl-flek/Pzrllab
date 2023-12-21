@@ -236,9 +236,19 @@ int prost(int num1, int num2,char *oper)
 
 void operation(char* num1, char* num2, char *oper)
 {
-    if(num1[0] == '0' && num2[0] == '0')
+    int flag1 = 0;
+    int flag2 = 0;
+    if(num1[0] == '-')
     {
-	if(num1[1] == 'x' && num2[1] == 'x')
+	flag1 = 1;
+    }
+    if(num2[0] == '-')
+    {
+	flag2 = 1;
+    }
+    if(num1[0 + flag1] == '0' && num2[0 + flag2] == '0')
+    {
+	if(num1[1 + flag1] == 'x' && num2[1 + flag2] == 'x')
 	{
 	    int x = toten(num1,16, 0);
 	    int y = toten(num2,16, 1);
@@ -248,12 +258,14 @@ void operation(char* num1, char* num2, char *oper)
 	    printf("%s (%d)\n",str,result);
 	    exit(0);
 	}
-	else if((num1[1] == 'x' && num2[1] != 'x') || (num1[1] != 'x' && num2[1] == 'x'))
+	else if((num1[1 + flag1] == 'x' && num2[1 + flag2] != 'x') || (num1[1 + flag1] != 'x' && num2[1 + flag2] == 'x'))
 	{
+	     
 	     printf("Error Not same sist\n");
 	     exit(-1);
 	}
-	else if(num1[1] != 'x' && num2[1] != 'x')
+	
+	else if(num1[1 + flag1] != 'x' && num2[1 + flag2] != 'x')
 	{
 	    int x = toten(num1,8, 0);
 	    int y = toten(num2,8, 1);
@@ -273,8 +285,9 @@ void operation(char* num1, char* num2, char *oper)
     }
     else
     {
-	if (num1[0] == '0' || num2[0] == '0')
+	if (num1[0 + flag1] == '0' || num2[0 + flag2] == '0')
 	{
+	     
 	     printf("ERROR Not same sist\n");
 	     exit(-1);
 	}
@@ -290,4 +303,39 @@ void operation(char* num1, char* num2, char *oper)
 	exit(0);	
 	//return str;
     }
-}	
+}
+
+
+void tild(char* num)
+{
+    num += 1;
+    if(num[0] == '0')
+    {
+	if(num[1] == 'x')
+	{
+	    int x = toten(num,16,0);
+	    int y = ~x;
+	    char *str = tenhex(y);
+
+	    printf("%s (%d)",str,y);
+	    exit(0);
+	}
+	int x = toten(num,8,0);
+	int y = ~x;
+	char *str = tenoct(y);
+
+	printf("%s (%d)",str,y);
+	exit(0);
+
+    }
+    else
+    {
+	int x = toten(num,2,0);
+	int y = ~x;
+	char *str = tenbin(y);
+
+	printf("%s (%d)",str,y);
+	exit(0);
+    }
+   
+}
