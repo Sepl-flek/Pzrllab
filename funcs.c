@@ -38,6 +38,7 @@ int toten(char* num,int base, int count)
     {
 	result = result*(-1);
     }
+    
     return result;
 }
 
@@ -256,12 +257,17 @@ void operation(char* num1, char* num2, char *oper)
 	    int result = prost(x,y,oper);
 	    char *str = tenhex(result);
 	    printf("%s (%d)\n",str,result);
+	    free(str);
+	    
+
 	    exit(0);
 	}
 	else if((num1[1 + flag1] == 'x' && num2[1 + flag2] != 'x') || (num1[1 + flag1] != 'x' && num2[1 + flag2] == 'x'))
 	{
 	     
 	     printf("Error Not same sist\n");
+	     
+
 	     exit(-1);
 	}
 	
@@ -280,6 +286,7 @@ void operation(char* num1, char* num2, char *oper)
 	    char *str = tenoct(result);
 
 	    printf("%s (%d)\n",str,result);
+	    free(str);
 	    exit(0);
 	}
     }
@@ -299,7 +306,7 @@ void operation(char* num1, char* num2, char *oper)
 
 	char *str = tenbin(result);
 	printf("%s (%d)\n",str,result);
-
+	free(str);	
 	exit(0);	
 	//return str;
     }
@@ -318,6 +325,7 @@ void tild(char* num)
 	    char *str = tenhex(y);
 
 	    printf("%s (%d)",str,y);
+	    free(str);
 	    exit(0);
 	}
 	int x = toten(num,8,0);
@@ -325,6 +333,7 @@ void tild(char* num)
 	char *str = tenoct(y);
 
 	printf("%s (%d)",str,y);
+	free(str);
 	exit(0);
 
     }
@@ -335,6 +344,7 @@ void tild(char* num)
 	char *str = tenbin(y);
 
 	printf("%s (%d)",str,y);
+	free(str);
 	exit(0);
     }
    
