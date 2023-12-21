@@ -4,25 +4,36 @@
 
 int main(int argc, char** argv)
 {
-    char *num = NULL;
-    size_t size = 0;
-    getline(&num, &size,stdin);
-    char* arr[sizeof(num)];
-    char* token = strtok(num," ");
-    char *oper;
-    
+    	
+    char input[1000];
 
+    fgets(input, 1000, stdin);
+
+    char *arr[100]; 
+
+    char *token = strtok(input, " "); 
+    
     int i = 0;
 
-    while(token != NULL)
-    {
-	arr[i++] = token;
-	token = (NULL," ");
+    char oper[10];
+
+    while (token != NULL) {
+
+        if(isdigit(token[0]) == 0){
+
+            strcpy(oper, token);
+        }
+
+        arr[i++] = token; 
+
+        token = strtok(NULL, " ");
+
+    
     }
 
     if(i == 2 || i >= 4)
     {
-	printf("ERROR");
+	printf("ERROR\n");
 	return -1;
     }
 
@@ -32,14 +43,21 @@ int main(int argc, char** argv)
     }
     else if(i == 3)
     {
-	char* num1 = arr[0];
-	oper = arr[1];
-	char* num2 = arr[2];
+	char* num1 = malloc(1000);
+	num1 = arr[0];
+	strcpy(oper, arr[1]);
+	char* num2 = malloc(1000);
+	num2 = arr[2];
 	operation(num1,num2,oper);
+
+
+	//strcpy(str,operation(num1,num2,oper));
+	//printf("%s\n",str);
+	//free(str);
     }
    
-        
-
+  
+  free(token);
     
     
     return 0;

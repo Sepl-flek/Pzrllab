@@ -8,12 +8,13 @@
 #include <limits.h>
 #include <math.h>
 
-int toten(char* num, int base);
+int toten(char* num, int base, int count);
 
-char* tenbin(int x);
-char* tenhex(int num);
-char* tenoct(int x);
+char* tenbin(int decimalNumber);
+char* tenhex(int decimalNumber);
+char* tenoct(int decimalNumber);
 
 
-char* operation(char* num1, char* num2, char* oper);
+void operation(char* num1, char* num2, char* oper);
 
+int prost(int num1, int num2, char* oper);
